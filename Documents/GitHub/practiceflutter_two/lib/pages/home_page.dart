@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:practiceflutter_two/util/coffee_type.dart';
+
+import '../util/coffee_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,6 +12,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //! list of coffee type
+  final List coffeetype = [
+    //* 커피 타입 [커피타입, 설렉되면]
+    [
+      'Cappucino',
+      true,
+    ],
+    [
+      'Latte',
+      false,
+    ],
+    [
+      'Black',
+      false,
+    ],
+    [
+      'Drink',
+      false,
+    ],
+  ];
+  void coffeeTypeSelected(int index) {
+    setState(() {
+      for (int i = 0; i < coffeetype.length; i++) {
+        coffeetype[i][1] = false;
+      }
+      coffeetype[index][1] = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +82,8 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: TextField(
             decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: 'Find your coffee in here',
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey.shade600),
                 ),
@@ -57,9 +91,40 @@ class _HomePageState extends State<HomePage> {
                   borderSide: BorderSide(color: Colors.grey.shade600),
                 )),
           ),
-        )
+        ),
+        SizedBox(
+          height: 25,
+        ),
+
+        //* horizontal listview coffee type
+        Container(
+          height: 30,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: coffeetype.length,
+            itemBuilder: (context, index) {
+              return CoffeeType(
+                coffeeType: coffeetype[index][0],
+                isSelected: coffeetype[index][1],
+                onTap: () {
+                  coffeeTypeSelected(index);
+                },
+              );
+            },
+          ),
+        ),
 
         //*Horizontal listveiw for thecoffee list
+        Expanded(
+            child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            //? 커피타일을 만들어서 가져옴
+            CoffeeTile(),
+            CoffeeTile(),
+            CoffeeTile(),
+          ],
+        ))
       ]),
     );
   }
