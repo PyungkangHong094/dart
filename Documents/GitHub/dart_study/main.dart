@@ -9,4 +9,25 @@ void main() {
   var name = 'pk';
   String name2 = "pk";
   var whatisit = 1;
+
+  //* dynamic
+  //* 다이나믹은 어떤값이 많이들어간다.
+  //? 다이나믹은 왜 필요한가?
+  //! 예시
+  if (name is String) {}
+
+  //! null safty
+  /* 런타임 에러가 뜨는거  
+  ? 라는 의미는 or 
+  어떤 변수, 혹은 데이터가 null 이 될 수 있음을명시하는걸 말한다 
+  그래서 이프를 쓴건다. */
+  String? pk = 'pk';
+  pk = null;
+  // pk?.isNotEmpty;
+  if (pk != null) {
+    pk.isNotEmpty;
+  }
+
+  //! final variable
+  /* 파이널은 바뀌지 않는다 var 같은거긴하지만 그 값을 처음에 지정해주면 바뀌지않는다*/
 }
