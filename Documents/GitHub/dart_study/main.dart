@@ -30,4 +30,30 @@ void main() {
 
   //! final variable
   /* 파이널은 바뀌지 않는다 var 같은거긴하지만 그 값을 처음에 지정해주면 바뀌지않는다*/
+
+  //! late variable
+  /* late 변수는 나중에 값을 받아 오는것이다
+   에이피아이를 가져올 때 많이 쓴다 
+   */
+
+  // ! 기본 데이터 타입
+  /** String, bool, int, double 이 모든것이 다 object 이다 
+   * 객체지향 언어로 불리는 이유이다 
+   */
+
+  //! list
+  var giveMeFive = true;
+  List<int> num = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    if (giveMeFive) 5,
+  ];
 }
