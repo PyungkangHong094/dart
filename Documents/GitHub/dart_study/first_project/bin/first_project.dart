@@ -60,7 +60,16 @@ void main(List<String> arguments) {
     return "hellow  nice to meet u , my $name i live $country my age is $age";
   }
 
-  void main() {
-    recaptest("dd", "country", 11);
+  // void main() {
+  //   recaptest("dd", "country", 11);
+  // }
+
+  //! qq operator
+  //* 정말 중요함
+  // ?? and ?=
+  String capitalizeName(String? name){if (name!=null) returnname.toUpperCase();)};
+
+  void main(){
+
   }
 }
