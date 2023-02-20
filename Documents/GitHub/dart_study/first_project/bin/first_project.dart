@@ -67,9 +67,21 @@ void main(List<String> arguments) {
   //! qq operator
   //* 정말 중요함
   // ?? and ?=
-  String capitalizeName(String? name){if (name!=null) returnname.toUpperCase();)};
+  /*** 
+   * ?? 연산자를 이용하면 왼쪽값이 null인지 체크해서 Null이  아나ㅣ면 왼쪽 값을 리턴하고 Null이면 오른쪽 값을 리턴한다
+   ***/
 
-  void main(){
+  // void main() {
+  //   String? name;
+  //   name ??= 'nico';
+  //   name = null;
+  //   name ??= 'other';
+  //   print(name);
+  // }
 
+  String hihi(Map<String, String> userinfo) {
+    return "hi ${userinfo["name"]}";
   }
+
+  List<int> reverseListOfNumbers(List<int> list) {}
 }

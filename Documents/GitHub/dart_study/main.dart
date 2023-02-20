@@ -56,6 +56,4 @@ void main() {
     10,
     if (giveMeFive) 5,
   ];
-
-  var
 }
