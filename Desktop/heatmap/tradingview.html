@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradingView 위젯</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .menu-bar {
+            background-color: #333;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .menu-bar button {
+            background-color: #333;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-bar button:hover {
+            background-color: #555;
+        }
+
+        .tradingview-container {
+            display: none;
+            width: 1020px;
+            height: 500px;
+            border: 2px solid white;
+            margin: 20px auto; /* 상하 여백 추가 */
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* 모바일 환경에서 적용할 스타일 */
+        @media (max-width: 1024px) {
+            .tradingview-container {
+                width: 100%;
+                height: auto; /* 높이 자동 조정 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu-bar">
+        <button onclick="toggleWidget('widget3')">ALL</button>
+        <button onclick="toggleWidget('widget1')">SPX500</button>
+        <button onclick="toggleWidget('widget2')">NASDAQ100</button>
+    </div>
+
+    <div id="widget1" class="tradingview-container active">
+        <!-- SPX500 코드를 여기에 삽입 -->
+
+        <div class="tradingview-widget-container" style="width: 100%; height: 100%;">
+            <div class="tradingview-widget-container__widget"></div>
+
+            <script type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+                    {
+                        "exchanges": [],
+                            "dataSource": "SPX500",
+                                "grouping": "sector",
+                                    "blockSize": "market_cap_basic",
+                                        "blockColor": "change",
+                                            "locale": "kr",
+                                                "symbolUrl": "",
+                                                    "colorTheme": "dark",
+                                                        "hasTopBar": false,
+                                                            "isDataSetEnabled": false,
+                                                                "isZoomEnabled": true,
+                                                                    "hasSymbolTooltip": true,
+                                                                        "width": "100%",
+                                                                            "height": "100%"
+                    }
+                </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+    <!-- SPX500 Widget END -->
+
+
+    <!-- NASDAQ100 Widget BEGIN -->
+    <div id="widget2" class="tradingview-container">
+        <!-- NASDAQ100 코드를 여기에 삽입 -->
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+
+            <script type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+                    {
+                        "exchanges": [],
+                            "dataSource": "NASDAQ100",
+                                "grouping": "sector",
+                                    "blockSize": "market_cap_basic",
+                                        "blockColor": "change",
+                                            "locale": "kr",
+                                                "symbolUrl": "",
+                                                    "colorTheme": "dark",
+                                                        "hasTopBar": false,
+                                                            "isDataSetEnabled": false,
+                                                                "isZoomEnabled": true,
+                                                                    "hasSymbolTooltip": true,
+                                                                        "width": "100%",
+                                                                            "height": "100%"
+                    }
+                </script>
+        </div>
+    </div>
+
+    <!-- NASDAQ100 Widget END -->
+
+    <div id="widget3" class="tradingview-container">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+                    {
+                        "exchanges": [],
+                            "dataSource": "AllUSA",
+                                "grouping": "sector",
+                                    "blockSize": "market_cap_basic",
+                                        "blockColor": "change",
+                                            "locale": "kr",
+                                                "symbolUrl": "",
+                                                    "colorTheme": "dark",
+                                                        "hasTopBar": false,
+                                                            "isDataSetEnabled": false,
+                                                                "isZoomEnabled": true,
+                                                                    "hasSymbolTooltip": true,
+                                                                        "width": "100%",
+                                                                            "height": "100%"
+                    }
+                </script>
+        </div>
+    </div>
+    <!-- TradingView Widget END -->
+
+    <script>
+        function toggleWidget(widgetId) {
+            const containers = document.querySelectorAll('.tradingview-container');
+            containers.forEach(container => {
+                container.classList.remove('active');
+            });
+            const selectedWidget = document.getElementById(widgetId);
+            selectedWidget.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
